@@ -8,32 +8,12 @@
 </head>
 <body>
     <h1 id="h1">Vitseprogram</h1>
-    <h2>Klikk på en knapp for å skifte språk.</h2>
+    <h2 id="h2">Klikk på en knapp for å skifte språk.</h2>
     <button id="no">Norsk</button>
     <button id="en">English</button>
     <p id="vits"></p>
 
-    <script>
-        let noBtn = document.getElementById("no");
-        let enBtn = document.getElementById("en");
-        let vits = document.getElementById("vits");
-        let h1 = document.getElementById("h1");
-
-        noBtn.addEventListener("click", async function(evt){
-            let resp = await fetch("/joke/no");
-            let data = await resp.json();
-            vits.innerHTML = data.joke;
-            h1.innerHTML = Dictionary.no.h1;
-            h2.innerHTML = Dictionary.no.h2;
-        });
-
-        enBtn.addEventListener("click", async function(evt){
-            let resp = await fetch("/joke/en");
-            let data = await resp.json();
-            vits.innerHTML = data.joke;
-            h1.innerHTML = Dictionary.en.h1;
-            h2.innerHTML = Dictionary.en.h2;
-        }); 
-    </script>
+    <script type="module" src="./DictionaryModule/dictionary.mjs"></script>
+    <script type="module" src="./index.mjs"></script>
 </body>
 </html>

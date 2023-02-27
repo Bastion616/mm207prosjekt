@@ -8,6 +8,7 @@ const noJoke = new Joke(Dictionary.no.joke);
 const enJoke = new Joke(Dictionary.en.joke);
 
 server.set('port', port);
+
 server.use(express.static('public'));
 
 server.get("/joke/no", function (req,res,next) {
@@ -21,5 +22,5 @@ server.get("/joke/no", function (req,res,next) {
   });
 
 server.listen(server.get('port'), function () {
-console.log('server running', server.get('port'));
+    console.log('server running', server.get('port'));
 });
