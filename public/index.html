@@ -1,19 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1 id="h1">Vitseprogram</h1>
-    <h2 id="h2">Klikk på en knapp for å skifte språk.</h2>
-    <button id="no">Norsk</button>
-    <button id="en">English</button>
-    <p id="vits"></p>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <script type="module" src="./DictionaryModule/dictionary.mjs"></script>
-    <script type="module" src="./index.mjs"></script>
-</body>
+        <link rel="stylesheet" href="pokedex.css">
+        <title>Pokédex</title>
+    </head>
+    <body>
+        <h1>Pokédex</h1>
+        <div id="content-box">
+            <!-- Left Side, display pokemon info -->
+            <div id="pokemon-info">
+                <img id="pokemon-img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png">
+                <div id="pokemon-types">
+                    <span class="type-box grass">GRASS</span><span class="type-box poison">POISON</span>
+                </div>
+                <div id="pokemon-description"></div>
+            </div> 
+            <!-- Right side, display pokemon list -->
+            <div id="pokemon-list"></div>
+        </div>
+        <div id="btns">
+            <button id="eng">English</button>
+            <button id="ger">German</button>
+            <button id="normal">Normal</button>
+            <button id="shiny">Shiny</button>
+        </div>
+    </body>
+    <script src="index.mjs">
+    </script>
 </html>
