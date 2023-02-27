@@ -13,6 +13,7 @@ window.onload = async function()
     {
         await getPokemon(i);
 
+        //Gets the names and id of the pokemon and displays them in the div in uppercase. 
         let pokemon = document.createElement("div");
         pokemon.id = i;
         pokemon.innerText = i.toString() + ". " + pokedex[i]["name"].toUpperCase(); 
@@ -45,7 +46,17 @@ window.onload = async function()
             //Update descripton
             document.getElementById("pokemon-description").innerText = pokedex[this.id]["desc"];
 
-            
+             //Update image
+            let pokemonImg = pokedex[this.id]["img"];
+            let pokemonShiny = pokedex[this.id]["shinyImg"];
+            if (document.getElementById("normal").checked) 
+            {
+                document.getElementById("pokemon-img").src = pokemonImg;
+            } 
+            else if (document.getElementById("shiny").checked) 
+            {
+                document.getElementById("pokemon-img").src = pokemonShiny;
+            }
         });
 
         document.getElementById("pokemon-description").innerText = pokedex[1]["desc"];
@@ -86,3 +97,11 @@ async function getPokemon(num)
         pokedex[num] = {"name" : pokemonName, "img" : pokemonShiny, "types" : pokemonType, "desc" : pokemonDesc};
     });
 }
+
+noBtn.addEventListener("click", async function(evt){
+    h2.innerHTML = Dictionary.no.h2;
+});
+
+enBtn.addEventListener("click", async function(evt){
+    h2.innerHTML = Dictionary.en.h2;
+}); 

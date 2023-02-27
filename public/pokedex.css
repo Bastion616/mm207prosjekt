@@ -210,13 +210,13 @@ button {
     margin-top: 10px;
 }
 
-#eng:hover
+#no:hover
 {
     background-color: rgb(230, 230, 230);
     cursor: pointer;
 }
 
-#ger:hover
+#en:hover
 {
     background-color: rgb(230, 230, 230);
     cursor: pointer;
