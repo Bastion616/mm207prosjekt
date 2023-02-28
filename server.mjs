@@ -1,5 +1,5 @@
 import express from 'express'
-import Dictionary from './DictionaryModule/dictionary.mjs';
+import Dictionary from './public/DictionaryModule/dictionary.mjs';
 
 const server = express();
 const port = (process.env.PORT || 8080);
