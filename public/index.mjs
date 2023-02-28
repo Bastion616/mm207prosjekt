@@ -1,3 +1,5 @@
+import Dictionary from './DictionaryModule/dictionary.mjs';
+console.log(Dictionary);
 
 const pokemonCount = 151;
 let pokedex = {}; 
@@ -100,8 +102,12 @@ async function getPokemon(num)
 
 noBtn.addEventListener("click", async function(evt){
     h2.innerHTML = Dictionary.no.h2;
+    normalBtn.innerHTML = Dictionary.no.normal;
+    shinyBtn.innerHTML = Dictionary.no.shiny;
 });
 
 enBtn.addEventListener("click", async function(evt){
     h2.innerHTML = Dictionary.en.h2;
-}); 
+    normalBtn.innerHTML = Dictionary.en.normal;
+    shinyBtn.innerHTML = Dictionary.en.shiny;
+});
