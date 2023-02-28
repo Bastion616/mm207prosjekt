@@ -7,6 +7,8 @@ let noBtn = document.getElementById("no");
 let enBtn = document.getElementById("en");
 let normalBtn = document.getElementById("normal");
 let shinyBtn = document.getElementById("shiny");
+let wishlistBtn = document.getElementById("wishlist");
+let addToWishlistBtn = document.getElementById("addToWishlist");
 
 window.onload = async function() 
 {
@@ -104,10 +106,14 @@ noBtn.addEventListener("click", async function(evt){
     h2.innerHTML = Dictionary.no.h2;
     normalBtn.innerHTML = Dictionary.no.normal;
     shinyBtn.innerHTML = Dictionary.no.shiny;
+    wishlistBtn.innerHTML = Dictionary.no.wishlist;
+    addToWishlistBtn.innerHTML = Dictionary.no.addToWishlist;
 });
 
 enBtn.addEventListener("click", async function(evt){
     h2.innerHTML = Dictionary.en.h2;
     normalBtn.innerHTML = Dictionary.en.normal;
     shinyBtn.innerHTML = Dictionary.en.shiny;
+    wishlistBtn.innerHTML = Dictionary.en.wishlist;
+    addToWishlistBtn.innerHTML = Dictionary.en.addToWishlist;
 });

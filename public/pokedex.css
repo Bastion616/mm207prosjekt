@@ -218,6 +218,28 @@ button {
     margin-top: 10px;
 }
 
+#no
+{
+    background-image: url("./Images/norway.png");
+    background-size: contain;
+    background-position: center;
+    color: transparent;
+}
+
+#en
+{
+    background: url("./Images/england.png");
+    background-size: contain;
+    background-position: center;
+    color: transparent;
+}
+
+#wishlistButtons
+{
+    text-align: center;
+    margin-top: 10px;
+}
+
 #no:hover
 {
     background-color: rgb(230, 230, 230);
