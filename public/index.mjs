@@ -1,4 +1,4 @@
-import Dictionary from '../DictionaryModule/dictionary.mjs';
+import Dictionary from './DictionaryModule/dictionary.mjs';
         
 let noBtn = document.getElementById("no");  
 let enBtn = document.getElementById("en");
