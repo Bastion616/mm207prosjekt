@@ -1,18 +1,15 @@
-body 
-{ 
+body {
     background: url("./Images/pokemon.jpg") no-repeat;
     background-size: cover;
     font-family: Arial, Helvetica, sans-serif;
 }
 
-h1
-{
+h1 {
     text-align: center;
     font-size: 48px;
 }
 
-h2
-{
+h2 {
     text-align: center;
     font-size: 24px;
     margin-left: 20%;
@@ -25,38 +22,33 @@ h2
     padding: 5px;
 }
 
-#content-box 
-{
-    width: 500px;
+#contentBox {
+    width: 1000px;
     height: 500px;
     border: 10px solid lightgray;
     border-radius: 10px;
-
     display: flex;
     margin: 0 auto;
     margin-top: 60px;
-
-    background: url("./Images/pokeball.jpg") no-repeat;
     background-size: cover;
 }
 
-#pokemon-info 
-{
+#pokemonInfo {
+    background-color: rgb(224, 0, 0);
     width: 250px;
     height: 500px;
     text-align: center;
 }
 
-#pokemon-list
-{
+#pokemonList {
+    background-color: rgb(224, 0, 0);
     width: 250px;
     height: 500px;
     font-size: 18px;
     overflow-y: auto;
 }
 
-.pokemon-name 
-{
+.pokemonName {
     border: 1px solid black;
     border-radius: 10px;
     background-color: white;
@@ -65,13 +57,11 @@ h2
     cursor: pointer;
 }
 
-.pokemon-name:hover
-{
+.pokemonName:hover {
     background-color: rgb(230, 230, 230);
 }
 
-#pokemon-info img
-{
+#pokemonInfo img {
     width: 160px;
     height: 160px;
     border: 1px solid black;
@@ -80,13 +70,134 @@ h2
     background-color: white;
 }
 
-#pokemon-types
-{
+#pokemonTypes {
     margin-top: 10px;
 }
 
-.type-box 
-{
+#pokemonDescription {
+    width: 230px;
+    height: 180px;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+
+    margin: 0 auto;
+    margin-top: 10px;
+    padding: 2px;
+    font-size: 18px;
+    overflow-y: auto;
+}
+
+button {
+    font-size: 18px;
+    padding: 5px;
+    border-radius: 10px;
+    border: 1px solid black;
+    background-color: white;
+}
+
+#imageButtons {
+    text-align: center;
+    margin-top: 10px;
+}
+
+#languageButtons {
+    text-align: center;
+    margin-top: 10px;
+}
+
+#no {
+    background-image: url("./Images/norway.png");
+    background-size: contain;
+    background-position: center;
+    color: transparent;
+}
+
+#en {
+    background: url("./Images/england.png");
+    background-size: contain;
+    background-position: center;
+    color: transparent;
+}
+
+#addToWishlist {
+    margin-left: 320px;
+}
+
+#addToWishlist:hover {
+    background-color: rgb(230, 230, 230);
+    cursor: pointer;
+}
+
+#no:hover {
+    background-color: rgb(230, 230, 230);
+    cursor: pointer;
+}
+
+#en:hover {
+    background-color: rgb(230, 230, 230);
+    cursor: pointer;
+}
+
+#normal:hover {
+    background-color: rgb(230, 230, 230);
+    cursor: pointer;
+}
+
+#shiny:hover {
+    background-color: rgb(230, 230, 230);
+    cursor: pointer;
+}
+
+#wishlistContent {
+    height: 406px;
+    overflow-y: auto;
+}
+
+#wishlistContent>div {
+    border-top: 3px solid lightgrey;
+    user-select: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+#contentContainer {
+    width: 100%;
+}
+
+#wishlistSection {
+    width: 500px;
+    height: 500px;
+    background-color: #fff;
+    border-left: 10px solid lightgray;
+}
+
+#wishlistSection h3 {
+    font-size: 30px;
+    margin-left: 38%;
+    top: 0;
+}
+
+#wishlistContent button {
+    margin-right: 20px;
+}
+
+#wishlistContent button:hover {
+    background-color: rgb(230, 230, 230);
+    cursor: pointer;
+}
+
+#wishlistContent img {
+    margin-left: 10px;
+}
+
+#wishlistContent p {
+    font-size: 20px;
+}
+
+.typeBox {
     padding: 3px;
     margin: 5px;
     border: 1px solid white;
@@ -181,85 +292,4 @@ h2
 .poison {
     background-color: darkviolet;
     color: white;
-}
-
-#pokemon-description 
-{
-    width: 230px;
-    height: 180px;
-    background-color: white;
-    border: 1px solid black;
-    border-radius: 10px;
-
-    margin: 0 auto;
-    margin-top: 10px;
-    padding: 2px;
-    font-size: 18px;
-    overflow-y: auto;
-}
-
-button {
-    font-size: 18px;
-    padding: 5px;
-    border-radius: 10px;
-    border: 1px solid black;
-    background-color: white;
-}
-
-#imageButtons
-{
-    text-align: center;
-    margin-top: 10px;
-}
-
-#languageButtons
-{
-    text-align: center;
-    margin-top: 10px;
-}
-
-#no
-{
-    background-image: url("./Images/norway.png");
-    background-size: contain;
-    background-position: center;
-    color: transparent;
-}
-
-#en
-{
-    background: url("./Images/england.png");
-    background-size: contain;
-    background-position: center;
-    color: transparent;
-}
-
-#wishlistButtons
-{
-    text-align: center;
-    margin-top: 10px;
-}
-
-#no:hover
-{
-    background-color: rgb(230, 230, 230);
-    cursor: pointer;
-}
-
-#en:hover
-{
-    background-color: rgb(230, 230, 230);
-    cursor: pointer;
-}
-
-#normal:hover
-{
-    background-color: rgb(230, 230, 230);
-    cursor: pointer;
-}
-
-#shiny:hover
-{
-    background-color: rgb(230, 230, 230);
-    cursor: pointer;
 }
