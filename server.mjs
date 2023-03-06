@@ -1,13 +1,21 @@
 import express from 'express'
-import Dictionary from './public/DictionaryModule/dictionary.mjs';
+import loginRoute from './routes/login.mjs';
+import registerRoute from './routes/register.mjs'
 
-const server = express();
+const app = express();
 const port = (process.env.PORT || 8080);
 
-server.set('port', port);
+app.set('view engine', 'ejs');
 
-server.use(express.static('public'));
+app.set('port', port);
+app.use(express.static('public'));
+app.use("/login", loginRoute);
+app.use("/register", registerRoute);
 
-server.listen(server.get('port'), function () {
-    console.log('server running', server.get('port'));
+app.get('/', (req, res) => {
+    res.render('index.ejs');
+})
+
+app.listen(app.get('port'), function () {
+    console.log('server running', app.get('port'));
 });

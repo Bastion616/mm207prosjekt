@@ -2,7 +2,7 @@ import Dictionary from './DictionaryModule/dictionary.mjs';
 
 const pokemonCount = 151;
 let pokedex = {};
-let selectedPokemonId = null; // variable to keep track of the selected Pokemon id
+let selectedPokemonId = null;
 const noBtn = document.getElementById("no");
 const enBtn = document.getElementById("en");
 const normalBtn = document.getElementById("normal");
@@ -14,8 +14,7 @@ window.onload = async function () {
 
     for (let i = 1; i <= pokemonCount; i++) {
         await getPokemon(i);
-
-        //Gets the names and id of the pokemon and displays them in the div in uppercase. 
+ 
         let pokemon = document.createElement("div");
         pokemon.id = i;
         pokemon.innerText = i.toString() + ". " + pokedex[i]["name"].toUpperCase();
@@ -25,13 +24,11 @@ window.onload = async function () {
         pokemon.addEventListener("click", function updatePokemon() {
             document.getElementById("pokemonImg").src = pokedex[this.id]["img"];
 
-            //Remove previous type
             let typesDiv = document.getElementById("pokemonTypes");
             while (typesDiv.firstChild) {
                 typesDiv.firstChild.remove();
             }
 
-            //Update types
             let types = pokedex[this.id]["types"];
             for (let i = 0; i < types.length; i++) {
                 let type = document.createElement("span");
@@ -41,10 +38,8 @@ window.onload = async function () {
                 typesDiv.append(type);
             }
 
-            //Update descripton
             document.getElementById("pokemonDescription").innerText = pokedex[this.id]["desc"];
 
-            //Update image
             let pokemonImg = pokedex[this.id]["img"];
             let pokemonShiny = pokedex[this.id]["shinyImg"];
             if (document.getElementById("normal").checked) {
@@ -113,7 +108,7 @@ addToWishlistBtn.addEventListener("click", function () {
     for (let i = 1; i <= pokemonCount; i++) {
         let pokemon = document.getElementById(i);
         pokemon.addEventListener("click", function () {
-            selectedPokemonId = i; // update the selected Pokemon id
+            selectedPokemonId = i;
         });
     }
 
@@ -135,8 +130,8 @@ addToWishlistBtn.addEventListener("click", function () {
         console.log(numOfItems);
 
         wishlistDelete.addEventListener("click", function () {
-            wishlistItem.remove(); // remove the wishlist item from the wishlistContent div
-            numOfItems--; // decrease the number of items in the wishlist
+            wishlistItem.remove();
+            numOfItems--;
             console.log(numOfItems);
         });
     }
