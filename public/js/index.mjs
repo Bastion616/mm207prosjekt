@@ -1,4 +1,4 @@
-import Dictionary from './DictionaryModule/dictionary.mjs';
+import Dictionary from '../DictionaryModule/dictionary.mjs';
 
 const pokemonCount = 151;
 let pokedex = {};

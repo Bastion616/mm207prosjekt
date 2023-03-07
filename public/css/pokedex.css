@@ -1,5 +1,5 @@
 body {
-    background: url("./Images/pokemon.jpg") no-repeat;
+    background: url("../Images/pokemon.jpg") no-repeat;
     background-size: cover;
     font-family: Arial, Helvetica, sans-serif;
 }
@@ -107,14 +107,14 @@ button {
 }
 
 #no {
-    background-image: url("./Images/norway.png");
+    background-image: url("../Images/norway.png");
     background-size: contain;
     background-position: center;
     color: transparent;
 }
 
 #en {
-    background: url("./Images/england.png");
+    background: url("../Images/england.png");
     background-size: contain;
     background-position: center;
     color: transparent;
