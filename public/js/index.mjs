@@ -1,5 +1,38 @@
 import Dictionary from '../DictionaryModule/dictionary.mjs';
 
+const createUserBt = document.getElementById("registerUser");
+const loginUserBt = document.getElementById("loginUser");
+const registerBt = document.getElementById("register");
+const submitLoginBt = document.getElementById("submitLogin");
+const submitRegBt = document.getElementById("submitRegistration");
+
+
+createUserBt.onclick = (e) => {
+    e.preventDefault();
+    document.getElementById("CreateUserForm").classList.remove("hidden");
+    document.getElementById("pokedexPage").classList.add("hidden");
+    document.getElementById("CreateLoginForm").classList.add("hidden");
+    createUserBt.classList.add("hidden");
+    loginUserBt.classList.add("hidden");
+}
+
+loginUserBt.onclick = (e) => {
+    e.preventDefault();
+    document.getElementById("CreateLoginForm").classList.remove("hidden");
+    document.getElementById("pokedexPage").classList.add("hidden");
+    document.getElementById("CreateUserForm").classList.add("hidden");
+    createUserBt.classList.add("hidden");
+    loginUserBt.classList.add("hidden");
+
+    registerBt.onclick = (e) => {
+        e.preventDefault();
+        document.getElementById("CreateUserForm").classList.remove("hidden");
+        document.getElementById("pokedexPage").classList.add("hidden");
+        document.getElementById("CreateLoginForm").classList.add("hidden");
+    }
+}
+
+
 const pokemonCount = 151;
 let pokedex = {};
 let selectedPokemonId = null;
@@ -14,7 +47,7 @@ window.onload = async function () {
 
     for (let i = 1; i <= pokemonCount; i++) {
         await getPokemon(i);
- 
+
         let pokemon = document.createElement("div");
         pokemon.id = i;
         pokemon.innerText = i.toString() + ". " + pokedex[i]["name"].toUpperCase();
@@ -55,6 +88,66 @@ window.onload = async function () {
         document.getElementById("pokemonList").append(pokemon);
     }
     console.log(pokedex);
+
+    async function registerUser() {
+        const username = document.getElementById('registerUsername').value;
+        const password = document.getElementById('registerPassword').value;
+
+        const response = await fetch('/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ username, password })
+        });
+
+        if (response.ok) {
+            console.log('User registered successfully!');
+        } else {
+            console.error('Error registering user');
+        }
+    }
+
+    async function loginUser() {
+        const username = document.getElementById('usernameLogin').value;
+        const password = document.getElementById('passwordLogin').value;
+
+        const response = await fetch('/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ username, password })
+        });
+
+        if (response.ok) {
+            console.log('Login successful!')
+        } else {
+            console.error('Error logging in!')
+        }
+    }
+
+    registerBt.addEventListener('click', (event) => {
+        event.preventDefault();
+        document.getElementById('CreateUserForm').classList.remove('hidden');
+        document.getElementById('CreateLoginForm').classList.add('hidden');
+    });
+
+    submitRegBt.addEventListener('click', (event) => {
+        event.preventDefault();
+        registerUser();
+    });
+
+    loginBt.addEventListener('click', (event) => {
+        event.preventDefault();
+        document.getElementById('CreateLoginForm').classList.remove('hidden');
+        document.getElementById('CreateUserForm').classList.add('hidden');
+    });
+
+    submitLoginBt.addEventListener('click', (event) => {
+        event.preventDefault();
+        loginUser();
+    });
 }
 
 async function getPokemon(num) {
@@ -85,14 +178,14 @@ async function getPokemon(num) {
     });
 }
 
-noBtn.addEventListener("click", async function (evt) {
+noBtn.addEventListener("click", async function () {
     h2.innerHTML = Dictionary.no.h2;
     normalBtn.innerHTML = Dictionary.no.normal;
     shinyBtn.innerHTML = Dictionary.no.shiny;
     addToWishlistBtn.innerHTML = Dictionary.no.addToWishlist;
 });
 
-enBtn.addEventListener("click", async function (evt) {
+enBtn.addEventListener("click", async function () {
     h2.innerHTML = Dictionary.en.h2;
     normalBtn.innerHTML = Dictionary.en.normal;
     shinyBtn.innerHTML = Dictionary.en.shiny;
@@ -104,7 +197,7 @@ let numOfItems = 0;
 let wishlistContent = document.getElementById("wishlistContent");
 
 addToWishlistBtn.addEventListener("click", function () {
-
+    //Bug
     for (let i = 1; i <= pokemonCount; i++) {
         let pokemon = document.getElementById(i);
         pokemon.addEventListener("click", function () {

@@ -11,37 +11,67 @@
 </head>
 
 <body>
-    <h1>Pokédex</h1>
-    <h2 id="h2">Velg et språk! - Choose a language!</h2>
-    <div id="languageButtons">
-        <button id="no">Norsk</button>
-        <button id="en">English</button>
+
+    <div id="CreateUserForm" class="hidden">
+        <h1>Register new user</h1>
+        <form>
+            <label for="username">Username:</label>
+            <input type="text" id="usernameRegister" name="username"><br><br>
+
+            <label for="password">Password:</label>
+            <input type="password" id="passwordRegister" name="password"><br><br>
+
+            <button id="submitRegistration">Submit</button>
+        </form>
     </div>
 
-<div id="contentContainer">
-    <div id="contentBox">
-        <div id="pokemonInfo">
-            <img id="pokemonImg" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png">
-            <div id="pokemonTypes">
-                <span class="typeBox grass">GRASS</span><span class="typeBox poison">POISON</span>
+    <div id="CreateLoginForm" class="hidden">
+        <h1>Login</h1>
+        <form>
+            <label for="username">Username:</label>
+            <input type="text" id="usernameLogin" name="username"><br><br>
+
+            <label for="password">Password:</label>
+            <input type="password" id="passwordLogin" name="password"><br><br>
+
+            <button id="submitLogin">Submit</button>
+            <button id="register">Register</button>
+        </form>
+    </div>
+
+    <div id="pokedexPage">
+        <h1>Pokédex</h1>
+        <h2 id="h2">Velg et språk! - Choose a language!</h2>
+        <div id="languageButtons">
+            <button id="no">Norsk</button>
+            <button id="en">English</button>
+        </div>
+
+        <div id="contentContainer">
+            <div id="contentBox">
+                <div id="pokemonInfo">
+                    <img id="pokemonImg"
+                        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png">
+                    <div id="pokemonTypes">
+                        <span class="typeBox grass">GRASS</span><span class="typeBox poison">POISON</span>
+                    </div>
+                    <div id="pokemonDescription"></div>
+                </div>
+                <div id="pokemonList"></div>
+                <div id="wishlistSection">
+                    <h3>Wishlist</h3>
+                    <div id="wishlistContent"></div>
+                </div>
             </div>
-            <div id="pokemonDescription"></div>
         </div>
-        <div id="pokemonList"></div>
-        <div id="wishlistSection">
-            <h3>Wishlist</h3>
-            <div id="wishlistContent"></div>
+        <div id="imageButtons">
+            <button id="normal">Vanlig</button>
+            <button id="shiny">Skinnende</button>
+            <button id="addToWishlist">Legg til i ønskeliste</button>
         </div>
     </div>
-</div>
-    <div id="imageButtons">
-        <button id="normal">Vanlig</button>
-        <button id="shiny">Skinnende</button>
-        <button id="addToWishlist">Legg til i ønskeliste</button>
-    </div>
+    <a href="#createUser" id="registerUser">Register new user</a>
+    <a href="#loginUser" id="loginUser">Login</a>
 </body>
-<script type="module" src="./DictionaryModule/dictionary.mjs"></script>
-<script type="module" src="./js/index.mjs">
-</script>
-
+<script type="module" src="./js/index.mjs"></script>
 </html>
