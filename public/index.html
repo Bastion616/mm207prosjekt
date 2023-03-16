@@ -5,9 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A simple Pokédex application to view and manage your favorite Pokémon.">
 
     <link rel="stylesheet" href="./css/pokedex.css">
-    <title>Pokédex</title>
+    <title>Pokédex - View and Manage Your Favorite Pokémon</title>
 </head>
 
 <body>
@@ -15,10 +16,10 @@
     <div id="CreateUserForm" class="hidden">
         <h1>Register new user</h1>
         <form>
-            <label for="username">Username:</label>
+            <label for="usernameRegister">Username:</label>
             <input type="text" id="usernameRegister" name="username"><br><br>
 
-            <label for="password">Password:</label>
+            <label for="passwordRegister">Password:</label>
             <input type="password" id="passwordRegister" name="password"><br><br>
 
             <button id="submitRegistration">Submit</button>
@@ -28,10 +29,10 @@
     <div id="CreateLoginForm" class="hidden">
         <h1>Login</h1>
         <form>
-            <label for="username">Username:</label>
+            <label for="usernameLogin">Username:</label>
             <input type="text" id="usernameLogin" name="username"><br><br>
 
-            <label for="password">Password:</label>
+            <label for="passwordLogin">Password:</label>
             <input type="password" id="passwordLogin" name="password"><br><br>
 
             <button id="submitLogin">Submit</button>
@@ -70,8 +71,6 @@
             <button id="addToWishlist">Legg til i ønskeliste</button>
         </div>
     </div>
-    <a href="#createUser" id="registerUser">Register new user</a>
-    <a href="#loginUser" id="loginUser">Login</a>
 </body>
 <script type="module" src="./js/index.mjs"></script>
 </html>

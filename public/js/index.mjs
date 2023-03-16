@@ -1,35 +1,20 @@
 import Dictionary from '../DictionaryModule/dictionary.mjs';
 
-const createUserBt = document.getElementById("registerUser");
 const loginUserBt = document.getElementById("loginUser");
 const registerBt = document.getElementById("register");
 const submitLoginBt = document.getElementById("submitLogin");
 const submitRegBt = document.getElementById("submitRegistration");
 
 
-createUserBt.onclick = (e) => {
+document.getElementById("CreateLoginForm").classList.remove('hidden');
+document.getElementById("CreateUserForm").classList.add('hidden');
+document.getElementById("pokedexPage").classList.add('hidden');
+
+registerBt.onclick = (e) => {
     e.preventDefault();
     document.getElementById("CreateUserForm").classList.remove("hidden");
     document.getElementById("pokedexPage").classList.add("hidden");
     document.getElementById("CreateLoginForm").classList.add("hidden");
-    createUserBt.classList.add("hidden");
-    loginUserBt.classList.add("hidden");
-}
-
-loginUserBt.onclick = (e) => {
-    e.preventDefault();
-    document.getElementById("CreateLoginForm").classList.remove("hidden");
-    document.getElementById("pokedexPage").classList.add("hidden");
-    document.getElementById("CreateUserForm").classList.add("hidden");
-    createUserBt.classList.add("hidden");
-    loginUserBt.classList.add("hidden");
-
-    registerBt.onclick = (e) => {
-        e.preventDefault();
-        document.getElementById("CreateUserForm").classList.remove("hidden");
-        document.getElementById("pokedexPage").classList.add("hidden");
-        document.getElementById("CreateLoginForm").classList.add("hidden");
-    }
 }
 
 
@@ -55,6 +40,7 @@ window.onload = async function () {
 
 
         pokemon.addEventListener("click", function updatePokemon() {
+            selectedPokemonId = parseInt(this.id);
             document.getElementById("pokemonImg").src = pokedex[this.id]["img"];
 
             let typesDiv = document.getElementById("pokemonTypes");
@@ -90,40 +76,41 @@ window.onload = async function () {
     console.log(pokedex);
 
     async function registerUser() {
-        const username = document.getElementById('registerUsername').value;
-        const password = document.getElementById('registerPassword').value;
+        const usernameInput = document.getElementById('usernameRegister');
+        const passwordInput = document.getElementById('passwordRegister');
 
-        const response = await fetch('/register', {
+        const response = await fetch('/users/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ username, password })
+            body: JSON.stringify({ username : usernameInput.value, password : passwordInput.value })
         });
 
-        if (response.ok) {
-            console.log('User registered successfully!');
-        } else {
-            console.error('Error registering user');
-        }
+        let data = await response.json();
+
+        console.log(data);
     }
 
     async function loginUser() {
-        const username = document.getElementById('usernameLogin').value;
-        const password = document.getElementById('passwordLogin').value;
-
-        const response = await fetch('/login', {
+        const usernameLogin = document.getElementById('usernameLogin');
+        const passwordLogin = document.getElementById('passwordLogin');
+    
+        const response = await fetch('/users/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ username, password })
+            body: JSON.stringify({ username : usernameLogin.value, password : passwordLogin.value })
         });
-
+    
         if (response.ok) {
-            console.log('Login successful!')
+            let data = await response.json();
+            console.log(data);
+            document.getElementById("CreateLoginForm").classList.add("hidden");
+            document.getElementById("pokedexPage").classList.remove("hidden");
         } else {
-            console.error('Error logging in!')
+            alert('Login failed. Please check your credentials.');
         }
     }
 
@@ -135,13 +122,9 @@ window.onload = async function () {
 
     submitRegBt.addEventListener('click', (event) => {
         event.preventDefault();
-        registerUser();
-    });
-
-    loginBt.addEventListener('click', (event) => {
-        event.preventDefault();
-        document.getElementById('CreateLoginForm').classList.remove('hidden');
         document.getElementById('CreateUserForm').classList.add('hidden');
+        document.getElementById('CreateLoginForm').classList.remove('hidden');
+        registerUser();
     });
 
     submitLoginBt.addEventListener('click', (event) => {
@@ -197,14 +180,7 @@ let numOfItems = 0;
 let wishlistContent = document.getElementById("wishlistContent");
 
 addToWishlistBtn.addEventListener("click", function () {
-    //Bug
-    for (let i = 1; i <= pokemonCount; i++) {
-        let pokemon = document.getElementById(i);
-        pokemon.addEventListener("click", function () {
-            selectedPokemonId = i;
-        });
-    }
-
+ 
     if (selectedPokemonId) {
         numOfItems++;
         let wishlistItem = document.createElement("div");
