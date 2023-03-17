@@ -1,14 +1,16 @@
 import Dictionary from '../DictionaryModule/dictionary.mjs';
 
-const loginUserBt = document.getElementById("loginUser");
 const registerBt = document.getElementById("register");
 const submitLoginBt = document.getElementById("submitLogin");
 const submitRegBt = document.getElementById("submitRegistration");
 
+const createUserForm = document.getElementById("CreateUserForm");
+const createLoginForm = document.getElementById("CreateLoginForm");
+const pokedexPage = document.getElementById("pokedexPage");
 
-document.getElementById("CreateLoginForm").classList.remove('hidden');
-document.getElementById("CreateUserForm").classList.add('hidden');
-document.getElementById("pokedexPage").classList.add('hidden');
+createLoginForm.classList.remove('hidden');
+createUserForm.classList.add('hidden');
+pokedexPage.classList.add('hidden');
 
 registerBt.onclick = (e) => {
     e.preventDefault();
@@ -16,7 +18,6 @@ registerBt.onclick = (e) => {
     document.getElementById("pokedexPage").classList.add("hidden");
     document.getElementById("CreateLoginForm").classList.add("hidden");
 }
-
 
 const pokemonCount = 151;
 let pokedex = {};
@@ -84,7 +85,7 @@ window.onload = async function () {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ username : usernameInput.value, password : passwordInput.value })
+            body: JSON.stringify({ username: usernameInput.value, password: passwordInput.value })
         });
 
         let data = await response.json();
@@ -95,15 +96,15 @@ window.onload = async function () {
     async function loginUser() {
         const usernameLogin = document.getElementById('usernameLogin');
         const passwordLogin = document.getElementById('passwordLogin');
-    
+
         const response = await fetch('/users/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ username : usernameLogin.value, password : passwordLogin.value })
+            body: JSON.stringify({ username: usernameLogin.value, password: passwordLogin.value })
         });
-    
+
         if (response.ok) {
             let data = await response.json();
             console.log(data);
@@ -180,7 +181,7 @@ let numOfItems = 0;
 let wishlistContent = document.getElementById("wishlistContent");
 
 addToWishlistBtn.addEventListener("click", function () {
- 
+
     if (selectedPokemonId) {
         numOfItems++;
         let wishlistItem = document.createElement("div");
