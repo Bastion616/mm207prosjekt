@@ -1,23 +1,28 @@
 import express from 'express'
 import * as pg from 'pg'
-import dotenv from 'dotenv'
-dotenv.config();
 const { Client } = pg.default;
 const { createHmac } = await import('node:crypto');
 const router = express.Router();
 
 let userList = [];
 
-const db = process.env.DATABASE_URL;
+const db = process.env.DATABASE_URL || "postgres://zryxfihxityyul:8bd19b164d0ff355cf853e4278b0f11bdf09ed92fd3e5a52dac07f47afb92a0f@ec2-54-73-22-169.eu-west-1.compute.amazonaws.com:5432/de8j36jedqlqrt";
+
+const credentials = {
+    connectionString: db,
+    ssl: {
+        rejectUnauthorized: false 
+    }
+};
 
 router.post('/register', async (req, res) => {
-    const client = new Client(db);
+    const client = new Client(credentials);
     let results = null;
     try {
         const hash = createHmac('sha256', req.body.password).digest('hex');
         await client.connect();
 
-        const query = 'INSERT INTO "users"("username", "password") VALUES ($1, $2)';
+        const query = 'INSERT INTO users("username", "password") VALUES ($1, $2)';
         const values = [req.body.username, hash];
         results = await client.query(query, values);
 
@@ -34,7 +39,7 @@ router.post('/register', async (req, res) => {
 });
 
 router.post('/login', async (req, res) => {
-    const client = new Client(db);
+    const client = new Client(credentials);
     try {
         const hash = createHmac('sha256', req.body.password).digest('hex');
         await client.connect();
@@ -56,7 +61,7 @@ router.post('/login', async (req, res) => {
         console.error(error);
         res.sendStatus(500);
     } finally {
-        await client.end(); // Make sure to close the database connection
+        await client.end(); 
     }
 });
 
