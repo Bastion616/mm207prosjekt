@@ -158,13 +158,24 @@ button {
     overflow-y: auto;
 }
 
-#wishlistContent>div {
+.wishlist-item {
     border-top: 3px solid lightgrey;
     user-select: none;
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    padding: 5px;
+}
+
+#wishlistContent>div {
+    display: none;
+}
+
+#wishlistContent ul {
+    padding-left: 0;
+    margin: 0;
+    list-style-type: none;
 }
 
 #contentContainer {

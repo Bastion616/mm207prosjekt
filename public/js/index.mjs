@@ -26,6 +26,7 @@ const noBtn = document.getElementById("no");
 const enBtn = document.getElementById("en");
 const normalBtn = document.getElementById("normal");
 const shinyBtn = document.getElementById("shiny");
+const wishlistTxt = document.getElementById("wishlist");
 
 const addToWishlistBtn = document.getElementById("addToWishlist");
 
@@ -167,6 +168,7 @@ noBtn.addEventListener("click", async function () {
     normalBtn.innerHTML = Dictionary.no.normal;
     shinyBtn.innerHTML = Dictionary.no.shiny;
     addToWishlistBtn.innerHTML = Dictionary.no.addToWishlist;
+    wishlistTxt.innerHTML = Dictionary.no.wishlist;
 });
 
 enBtn.addEventListener("click", async function () {
@@ -174,28 +176,37 @@ enBtn.addEventListener("click", async function () {
     normalBtn.innerHTML = Dictionary.en.normal;
     shinyBtn.innerHTML = Dictionary.en.shiny;
     addToWishlistBtn.innerHTML = Dictionary.en.addToWishlist;
+    wishlistTxt.innerHTML = Dictionary.en.wishlist;
 });
 
 
 let numOfItems = 0;
-let wishlistContent = document.getElementById("wishlistContent");
+let wishlistContent = document.createElement("ul");
 
 addToWishlistBtn.addEventListener("click", function () {
-
     if (selectedPokemonId) {
         numOfItems++;
-        let wishlistItem = document.createElement("div");
+        let wishlistItem = document.createElement("li");
+        wishlistItem.classList.add("wishlist-item");
         let wishlistItemImage = document.createElement("img");
         let wishlistItemName = document.createElement("p");
         wishlistItemImage.src = pokedex[selectedPokemonId]["img"];
         wishlistItemName.innerHTML = pokedex[selectedPokemonId]["name"].toUpperCase();
         let wishlistDelete = document.createElement("button");
-        wishlistDelete.innerHTML = "Delete";
+
+        let trashcanImage = document.createElement("img");
+        trashcanImage.src = "../Images/trashcan.png";
+        trashcanImage.alt = "Delete";
+        trashcanImage.style.width = "45px";
+        trashcanImage.style.height = "50px";
+        trashcanImage.style.display = "block";
+        trashcanImage.style.margin = "auto";
 
         wishlistContent.appendChild(wishlistItem);
         wishlistItem.appendChild(wishlistItemImage);
         wishlistItem.appendChild(wishlistItemName);
         wishlistItem.appendChild(wishlistDelete);
+        wishlistDelete.appendChild(trashcanImage);
 
         console.log(numOfItems);
 
@@ -205,7 +216,9 @@ addToWishlistBtn.addEventListener("click", function () {
             console.log(numOfItems);
         });
     }
+    document.getElementById("wishlistContent").appendChild(wishlistContent);
 });
+
 
 
 
