@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A simple Pokédex application to view and manage your favorite Pokémon.">
+
+    <link rel="stylesheet" href="./css/pokedex.css">
+    <title>Pokédex - View and Manage Your Favorite Pokémon</title>
+</head>
+
+<body>
+    <div id="CreateUserForm" class="hidden">
+        <h1>Register new user</h1>
+        <form>
+            <label for="usernameRegister">Username:</label>
+            <input type="text" id="usernameRegister" name="username" required><br><br>
+
+            <label for="passwordRegister">Password:</label>
+            <input type="password" id="passwordRegister" name="password" required><br><br>
+
+            <button id="submitRegistration">Submit</button>
+        </form>
+    </div>
+
+    <div id="CreateLoginForm" class="hidden">
+        <h1>Login</h1>
+        <form>
+            <label for="usernameLogin">Username:</label>
+            <input type="text" id="usernameLogin" name="username" required><br><br>
+
+            <label for="passwordLogin">Password:</label>
+            <input type="password" id="passwordLogin" name="password" required><br><br>
+
+            <button id="submitLogin">Submit</button>
+            <button id="register">Register</button>
+        </form>
+    </div>
+
+    <div id="pokedexPage">
+        <button id="logoutBt">Logg ut</button>
+        <h1>Pokédex</h1>
+        <h2 id="h2">Velg et språk! - Choose a language!</h2>
+        <div id="languageButtons">
+            <button id="no">Norsk</button>
+            <button id="en">English</button>
+        </div>
+
+        <div id="contentContainer">
+            <div id="contentBox">
+                <div id="pokemonInfo">
+                    <img id="pokemonImg"
+                        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png">
+                    <div id="pokemonTypes">
+                        <span class="typeBox grass">GRASS</span><span class="typeBox poison">POISON</span>
+                    </div>
+                    <div id="pokemonDescription"></div>
+                </div>
+                <div id="pokemonList"></div>
+                <div id="wishlistSection">
+                    <h3 id="wishlist">Wishlist</h3>
+                    <div id="wishlistContent"></div>
+                </div>
+            </div>
+        </div>
+        <div id="imageButtons">
+            <button id="normal">Vanlig</button>
+            <button id="shiny">Skinnende</button>
+            <button id="addToWishlist">Legg til i ønskeliste</button>
+        </div>
+    </div>
+</body>
+<script type="module" src="./js/index.mjs"></script>
+
+</html>
