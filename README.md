@@ -1,4 +1,4 @@
-# mm207prosjekt
+# API Documentation
 | API | METHOD  | DESCRIPTION  | 
 | ------------- | ------------- | ------------- |
 | /users/register  | POST  | Creates new user with sha256 crytpation of passwords  |
