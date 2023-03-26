@@ -5,7 +5,6 @@ const Dictionary = {
         "shiny": "Shiny",
         "wishlist": "Wishlist",
         "addToWishlist": "Add to wishlist",
-        "deleteFromWishlist": "Delete",
         "logoutBt": "Logout"
     },
     no: {
@@ -14,9 +13,8 @@ const Dictionary = {
         "shiny": "Skinnende",
         "wishlist": "Ønskeliste",
         "addToWishlist": "Legg til i ønskeliste",
-        "deleteFromWishlist": "slett",
         "logoutBt": "Logg ut"
     }
-}
+};
 
 export default Dictionary;
