@@ -37,7 +37,7 @@ userRoute.post('/register', async (req, res) => {
     }
 });
 
-userRoute.get('/login', async (req, res) => {
+userRoute.post('/login', async (req, res) => {
     const client = new Client(credentials);
     try {
         const hash = createHmac('sha256', req.body.password).digest('hex');
