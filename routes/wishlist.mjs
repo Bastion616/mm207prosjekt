@@ -3,7 +3,7 @@ import * as pg from 'pg'
 const { Client } = pg.default;
 const wishlistRoute = express.Router();
 
-const db = process.env.DATABASE_URL || "postgres://zryxfihxityyul:8bd19b164d0ff355cf853e4278b0f11bdf09ed92fd3e5a52dac07f47afb92a0f@ec2-54-73-22-169.eu-west-1.compute.amazonaws.com:5432/de8j36jedqlqrt";
+const db = process.env.DATABASE_URL;
 
 const credentials = {
     connectionString: db,
@@ -22,14 +22,11 @@ wishlistRoute.post('/add', async (req, res) => {
     
     try {
         client.connect();
-        const query = 'INSERT INTO wishlist(user_id, pokemon_id) VALUES ($1, $2)';
+        const query = 'INSERT INTO wishlist(user_id, pokemon_id) VALUES ($1, $2)'   ;
         const values = [userId, pokemonId];
-        console.log("B");
         results = await client.query(query, values);
-        console.log("C")
         console.log("Results of INSERT query: ", results);
         res.status(201).json({ message: 'Pokémon added to wishlist.' })
-        console.log("D")
     } catch (error) {
         console.error("Error adding Pokémon to wishlist: ", error);
         res.status(500).json({ message: 'Error adding Pokémon to wishlist.' });
